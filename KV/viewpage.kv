@@ -1,0 +1,50 @@
+<ViewScreen>:
+	BoxLayout:
+		orientation: 'vertical'
+		MDToolbar:
+			pos_hint:{"top": 1, "right":1}
+			elevation:10
+			title:"Cafe Nalla"
+			md_bg_color:app.theme_cls.primary_color
+			left_action_items:[['menu', lambda x: app.root.ids.nav_drawer.set_state('toggle')]]
+			right_action_items:[['account', lambda x: app.change_screen('account_screen')]]
+	
+		FloatLayout:
+			id: load_floatie
+			GridLayout:
+				pos_hint:{"top":1, "right":1}
+				size_hint:1, 0.1
+				cols:1
+				id: warning
+
+				Label:
+					text:""
+					font_size: "25sp"
+					id:heading
+					pos_hint:{"top":1, "right":1}
+
+
+			GridLayout:
+				rows:1
+				pos_hint:{"top":0.85, "left":1}
+				size_hint: 1, 0.005
+				canvas.before:
+					Color:
+						rgb: app.theme_cls.primary_color
+					Rectangle:
+						size: self.size
+						pos: self.pos
+
+			# View box
+			ScrollView:
+				pos_hint:{"top":0.84, "right":0.95}
+				size_hint: 0.9, 0.80
+
+				GridLayout:
+					# Orders
+					cols:1
+					size_hint_y:None
+					height: self.minimum_height
+					row_default_height:'75dp'
+					#row_force_default: True
+					id: view_banner

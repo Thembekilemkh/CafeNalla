@@ -1,0 +1,50 @@
+#:include KV/homescreen.kv
+#:include KV/meals.kv
+#:include KV/orderscreen.kv
+#:include KV/checkoutscreen.kv
+#:include KV/signupscreen.kv
+#:include KV/loginscreen.kv
+#:include KV/accountscreen.kv
+#:include KV/viewpage.kv
+
+NavigationLayout:
+	ScreenManager:
+		id: screen_manager
+
+		LoginScreen:
+			name: 'login_screen'
+			id: login_screen
+
+		HomeScreen:
+			name: 'home_screen'
+			id: home_screen
+
+		SignUpScreen:
+			name: 'sign_up_screen'
+			id: sign_up_screen
+
+		MealsScreen:
+			name:'meals_screen'
+			id: meals_screen
+
+		OrderScreen:
+			name:'order_screen'
+			id: order_screen
+
+		CheckoutScreen:
+			name:'checkout_screen'
+			id: checkout_screen
+
+		AccountScreen:
+			name: 'account_screen'
+			id: account_screen
+
+		ViewScreen:
+			name: 'view_screen'
+			id: view_screen
+
+	MDNavigationDrawer:
+		id: nav_drawer
+		canvas:
+			Color:
+				rgba: app.theme_cls.primary_color
