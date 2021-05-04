@@ -1,0 +1,110 @@
+<OrderScreen>:
+	BoxLayout:
+		orientation: 'vertical'
+		MDToolbar:
+			pos_hint:{'top':1, 'right':1}
+			elevation:10
+			title: 'Cafe Nalla'
+			left_action_items:[['menu', lambda x: app.root.ids.nav_drawer.set_state('toggle')]]
+			md_bg_color:app.theme_cls.primary_color
+
+		BoxLayout:
+			# Order name and price
+			pos_hint:{'top':1, 'left':1}
+			size_hint:1, 0.1
+			orientation:'horizontal'
+			canvas.before:
+				Color:
+					rgb: app.theme_cls.primary_color
+				Rectangle:
+					size: self.size
+					pos: self.pos
+
+			GridLayout:
+				size_hint_x:0.85
+				cols:1
+				MDLabel:
+					#size_hint: 0.2, 1
+					#pos_hint:{'top':1, 'left':1}
+					id:meal_name
+					font_size: "18sp"
+			GridLayout:
+				size_hint_x:0.15
+				cols:1
+				MDLabel:
+					id:meal_price
+					font_size: "18sp"
+
+		GridLayout:
+			cols:1
+			size_hint: 1,0.05
+			pos_hint:{'top':0.9, 'left':1}
+			canvas.before:
+				Color:
+					rgb: app.theme_cls.primary_color
+				Rectangle:
+					size: self.size
+					pos: self.pos
+
+			MDLabel:
+				id: navigation
+				font_size:'11sp'
+
+		BoxLayout:
+			orientation:'vertical'
+			pos_hint:{'top':0.880, 'left':1}
+			size_hint:1, 0.2
+			MDGridLayout:
+				cols:1
+				size_hint_y:0.25
+				MDLabel:
+					text: 'Ingredients:'
+					font_size: '16sp'
+
+			MDGridLayout:
+				cols:1
+				size_hint_y:0.75
+				MDLabel:
+					id: ingredients
+
+		ScrollView:
+			# Scroll for menu and specials
+
+			pos_hint:{'top':0.63, 'left':1}
+			size_hint: 1,0.53
+
+			GridLayout:
+				# Extras
+				cols:1
+				size_hint_y:None
+				height: self.minimum_height
+				row_default_height:'75dp'
+				#row_force_default: True
+				id: extras
+
+		BoxLayout:
+			pos_hint:{'top':0.9, 'left':1}
+			size_hint:1,0.1
+
+			GridLayout:
+				cols:1
+				size_hint_x:0.25
+			GridLayout:
+				cols:1
+				size_hint_x:0.15
+				MDFlatButton:
+					text:'Cancel'
+					on_press:
+						print('Cancelling transaction')
+
+			GridLayout:
+				cols:1
+				size_hint_x:0.15
+
+				MDRaisedButton:
+					text:'Confirm'
+					on_press:
+						print('Proceding with transaction')
+						cols:1
+						app.place_order()
+

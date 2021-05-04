@@ -1,0 +1,131 @@
+<LoginScreen>:
+	BoxLayout:
+		orientation: 'vertical'
+		MDToolbar:
+			pos_hint:{"top": 1, "right":1}
+			elevation:10
+			title:"Cafe Nalla"
+			md_bg_color:app.theme_cls.primary_color
+	
+		FloatLayout:
+			#Filter for the background
+
+			GridLayout:
+				pos_hint:{"top":0.95, "right":1}
+				size_hint:1, 0.1
+				cols:1
+				id: warning
+
+				Label:
+					text:"Sign in"
+					font_size: "25sp"
+					pos_hint:{"top":1, "right":1}
+
+			GridLayout:
+				rows:1
+				pos_hint:{"top":0.85, "left":1}
+				size_hint: 1, 0.005
+				canvas.before:
+					Color:
+						rgb: app.theme_cls.primary_color
+					Rectangle:
+						size: self.size
+						pos: self.pos
+
+		    # Login box
+			FloatLayout:
+				pos_hint:{"top":0.84, "right":0.95}
+				size_hint: 0.9, 0.59
+
+				GridLayout:
+					cols:1
+					id: warning
+					size_hint: 1, 1/4
+					pos_hint:{"top": 1, "right":1}
+
+				# User name float layout
+				FloatLayout:
+					size_hint: 1, 1/4
+					pos_hint:{"top": 0.75, "right":1}
+
+					MDTextFieldRound:
+					    icon_left: "account"
+						pos_hint:{"top":0.75, "right":0.875}
+						size_hint: 0.75, 0.5
+						multiline: False
+						hint_text: "Name"
+						id: first_name
+
+				# Password float layout
+				FloatLayout:
+					size_hint: 1, 1/4
+					pos_hint:{"top":0.5, "right":1}
+
+					MDTextFieldRound:
+					    icon_left: 'key-variant'
+						pos_hint:{"top":0.75, "right":0.75}
+						size_hint: 0.65, 0.5
+						hint_text:"Password"
+						password: True
+						multiline: False
+						id: password
+
+					MDIconButton:
+						id: hide_password
+						icon:'eye-off'
+						pos_hint:{"top":0.75, "right":1}
+						size_hint:0.25, 0.5
+
+				# Grid layout for or two buttons
+				FloatLayout:
+					size_hint: 1, 1/4
+					pos_hint:{"top":0.25, "right":1}
+
+					#Float layout for dynamic placement of our buttons
+					FloatLayout:
+						pos_hint:{"top":1, "right":1}
+						size_hint:0.5, 1
+
+						MDRoundFlatIconButton:
+						    icon:'login'
+							pos_hint:{"top":0.75, "right":0.95}
+							size_hint: 0.9, 0.5
+							text:"Login"
+							id: login
+
+
+					FloatLayout:
+						pos_hint:{"top":1, "right":0.5}
+						size_hint:0.5, 1
+
+						MDRoundFlatIconButton:
+                            icon:'signature-freehand'
+							pos_hint:{"top":0.75, "right":0.95}
+							size_hint: 0.9, 0.5
+							text: "Sign Up"
+							on_press:
+								app.change_screen("sign_up_screen")
+								app.sign_up()
+
+			GridLayout:
+				pos_hint: {"top":0.25, "left":1}
+				size_hint: 1, 0.05
+				rows:1
+
+				LabelButton:
+					text: "Forgot Password?"
+					id: forgot_password
+
+			GridLayout:
+				pos_hint:{"top":0.2, "left":1}
+				size_hint:1, 0.2
+				rows:1
+				cols:3
+				id: bottom_grid
+				Label:
+					text:''
+
+				FloatLayout:
+					id: bottom_floatie
+				Label:
+					text:""

@@ -1,0 +1,35 @@
+<MealsScreen>:
+	BoxLayout:
+		orientation: 'vertical'
+		MDToolbar:
+			pos_hint:{'top':1, 'right':1}
+			elevation:10
+			title: 'Cafe Nalla'
+			left_action_items:[['menu', lambda x: app.root.ids.nav_drawer.set_state('toggle')]]
+			md_bg_color:app.theme_cls.primary_color
+
+		FloatLayout:
+			# Get your regular cup Button
+			pos_hint:{'top':1, 'left':1}
+			size_hint:1, 1
+
+			#MDRaisedButton
+			MDRectangleFlatButton:
+				pos_hint:{'top':1, 'right':1.1}
+				size_hint:1.2, 0.1
+				text: "Get your regular"
+
+			ScrollView:
+				# Scroll for menu and specials
+
+				pos_hint:{'top':0.9, 'left':1}
+				size_hint: 1,0.9
+
+				GridLayout:
+					# Menu cards
+					cols:1
+					size_hint_y:None
+					height: self.minimum_height
+					row_default_height:'75dp'
+					#row_force_default: True
+					id: menu
